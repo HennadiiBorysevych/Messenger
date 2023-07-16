@@ -20,6 +20,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(user);
+    
   } catch (error: any) {
     console.log(error, "REGISTRATION ERROR");
     return new NextResponse("Internal Error", { status: 500 });
