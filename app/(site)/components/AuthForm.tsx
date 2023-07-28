@@ -5,19 +5,20 @@ import { useForm } from "react-hook-form";
 import { FieldValues, SubmitHandler } from "react-hook-form/dist/types";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 import AuthSocialButton from "./AuthSocialButton";
 import Button from "@/app/components/Button";
 import Input from "@/app/components/inputs/Input";
-import { useRouter } from "next/navigation";
 
 const AuthForm = () => {
-  const session = useSession();
-  const router = useRouter();
   const [variant, setVariant] = useState<"LOGIN" | "REGISTER">("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+  const session = useSession();
 
   useEffect(() => {
     if (session?.status === "authenticated") {
@@ -85,6 +86,7 @@ const AuthForm = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
@@ -123,7 +125,7 @@ const AuthForm = () => {
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-gray-500 ">
