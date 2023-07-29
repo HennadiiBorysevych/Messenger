@@ -19,6 +19,7 @@ const AuthForm = () => {
 
   const router = useRouter();
   const session = useSession();
+  console.log("🚀 : session", session);
 
   useEffect(() => {
     if (session?.status === "authenticated") {
@@ -86,7 +87,6 @@ const AuthForm = () => {
       })
       .finally(() => setIsLoading(false));
   };
-
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
